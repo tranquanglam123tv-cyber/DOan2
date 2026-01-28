@@ -1,0 +1,208 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="contact-page">
+    <div class="content">
+
+        {# ===== TITLE ===== #}
+        <div class="container text-center mb-5">
+            <h1 class="display-4 fw-bold fade-up">
+                📍 Liên hệ FreshFood Fruits
+            </h1>
+            <p class="lead fade-up mt-3 mx-auto" style="max-width:750px;">
+                Hân hạnh đón tiếp quý khách tại cửa hàng hoặc qua các kênh trực tuyến để trải nghiệm nông sản sạch nhất.
+            </p>
+        </div>
+
+        {# ===== INFO CARDS ===== #}
+        <div class="container mb-5">
+            <div class="row g-4">
+                {# Địa chỉ #}
+                <div class="col-md-4 fade-up">
+                    <div class="info-card">
+                        <div class="icon">🏪</div>
+                        <h5>Cửa hàng chính</h5>
+                        <p>123 Đường Nông Sản, TP. Cần Thơ</p>
+                        <small>⏰ 7:00 – 21:00 (T2 – CN)</small>
+                    </div>
+                </div>
+
+                {# Email #}
+                <div class="col-md-4 fade-up">
+                    <div class="info-card">
+                        <div class="icon">📧</div>
+                        <h5>Email hỗ trợ</h5>
+                        <p>info@freshfoodfruits.com</p>
+                        <small>Phản hồi nhanh trong 24h</small>
+                    </div>
+                </div>
+
+                {# Hotline #}
+                <div class="col-md-4 fade-up">
+                    <div class="info-card">
+                        <div class="icon">📞</div>
+                        <h5>Hotline đặt hàng</h5>
+                        <p>+84 123 456 789</p>
+                        <small>Hỗ trợ tư vấn 7 ngày/tuần</small>
+                    </div>
+                </div>
+
+                {# Zalo #}
+                <div class="col-md-4 fade-up">
+                    <div class="info-card">
+                        <div class="icon text-zalo">💬</div>
+                        <h5>Zalo OA</h5>
+                        <p>ID: <strong>freshfoodfruits</strong></p>
+                        <small>Chat trực tiếp với tư vấn viên</small>
+                    </div>
+                </div>
+
+                {# Facebook #}
+                <div class="col-md-4 fade-up">
+                    <div class="info-card">
+                        <div class="icon text-fb">📘</div>
+                        <h5>Facebook</h5>
+                        <p><strong>FreshFood Fruits</strong></p>
+                        <small>Cập nhật ưu đãi mỗi ngày</small>
+                    </div>
+                </div>
+
+                {# TikTok #}
+                <div class="col-md-4 fade-up">
+                    <div class="info-card">
+                        <div class="icon text-tiktok">🎵</div>
+                        <h5>TikTok Shop</h5>
+                        <p>@<strong>freshfoodfruits</strong></p>
+                        <small>Video review nông sản thực tế</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# ===== GOOGLE MAP ===== #}
+        <div class="container mb-5 fade-up">
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.8415184085724!2d105.7684266147424!3d10.02993369283063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0883d2192b0f1%3A0x4c90a391a232588d!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBD4bqnbiBUaMah!5e0!3m2!1svi!2s!4v1612345678910!5m2!1svi!2s"
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+/* ĐỊNH NGHĨA BIẾN MÀU CHỦ ĐẠO */
+:root {
+    --primary-green: #27ae60;
+    --light-green: #f0fff4;
+    --medium-green: #e6ffed;
+    --dark-green: #1b7a43;
+    --soft-border: #a8e6cf;
+}
+
+/* ===== TỔNG THỂ ===== */
+.contact-page {
+    /* Đổi từ gradient cam sang gradient xanh lá sạch sẽ */
+    background: linear-gradient(180deg, var(--light-green) 0%, var(--medium-green) 45%, #ffffff 100%);
+    /* Tách nội dung xuống khỏi Navbar */
+    padding: 120px 0 70px;
+    font-family: 'Lexend', sans-serif;
+}
+
+.contact-page h1 {
+    color: var(--dark-green);
+}
+
+.contact-page .lead {
+    color: #4a6d58;
+}
+
+/* ===== INFO CARDS ===== */
+.info-card {
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 30px;
+    text-align: center;
+    /* Đổi viền cam sang viền xanh */
+    border: 1.5px solid var(--soft-border);
+    box-shadow: 0 14px 32px rgba(39, 174, 96, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 45px rgba(39, 174, 96, 0.18);
+    border-color: var(--primary-green);
+}
+
+.info-card .icon {
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+}
+
+.info-card h5 {
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 10px;
+}
+
+.info-card p {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.info-card small {
+    color: #666;
+    font-style: italic;
+}
+
+/* ===== MAP CONTAINER ===== */
+.map-container {
+    border-radius: 28px;
+    overflow: hidden;
+    border: 3px solid #ffffff;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 450px;
+    border: 0;
+    filter: grayscale(0.2) contrast(1.1); /* Tạo phong cách map hiện đại */
+}
+
+/* ===== ICON COLORS ===== */
+.text-zalo { color: #0068ff; }
+.text-fb { color: #1877f2; }
+.text-tiktok { color: #000000; }
+
+/* ===== ANIMATION ===== */
+.fade-up {
+    opacity: 0;
+    transform: translateY(35px);
+    animation: fadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive cho Mobile */
+@media (max-width: 768px) {
+    .contact-page {
+        padding-top: 100px;
+    }
+    .info-card {
+        padding: 20px;
+    }
+}
+</style>
+
+{% endblock %}

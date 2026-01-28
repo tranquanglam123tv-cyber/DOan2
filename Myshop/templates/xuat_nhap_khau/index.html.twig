@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{# ===== HERO XUẤT NHẬP KHẨU ===== #}
+<section class="hero-section">
+    <div class="overlay"></div>
+    <div class="hero-content text-center d-flex flex-column justify-content-center align-items-center" 
+         style="height:100%;">
+        <p class="lead fs-5 text-white mb-4" style="max-width:700px;">
+    </div>
+</section>
+
+{# ===== GIỚI THIỆU ===== #}
+<div class="container py-5">
+    <h2 class="section-title fade-up text-center display-5 mb-4">🌾 Giới thiệu dịch vụ</h2>
+    <p class="fade-up text-center fs-5 mx-auto" style="max-width:800px; line-height:1.8;">
+        FreshFood Fruits cung cấp dịch vụ xuất nhập khẩu nông sản an toàn, chất lượng cao từ các nước nổi tiếng trên thế giới.
+        Chúng tôi cam kết giao hàng đúng tiến độ, thủ tục thông quan nhanh chóng và sản phẩm đạt chuẩn quốc tế.
+    </p>
+</div>
+
+{# ===== QUY TRÌNH ===== #}
+<div class="container py-5">
+    <h2 class="section-title fade-up text-center display-5 mb-4">🔄 Quy trình xuất nhập khẩu</h2>
+    <div class="row g-4 mt-3">
+        {% for step in processSteps %}
+            <div class="col-md-3 fade-up text-center">
+                <div class="process-step p-4 border rounded shadow-sm h-100 bg-white text-center hover-shadow">
+                    <div class="step-number mb-3">
+                        <span class="fs-2 fw-bold text-success">{{ step.step }}</span>
+                    </div>
+                    <p class="fs-5">{{ step.title }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{# ===== SẢN PHẨM XUẤT NHẬP KHẨU ===== #}
+<div class="container py-5" id="products">
+    <h2 class="section-title fade-up text-center display-5 mb-4">📦 Sản phẩm xuất nhập khẩu tiêu biểu</h2>
+
+    <div class="row g-4 mt-3">
+        {% for product in products|slice(0,4) %}
+            <div class="col-md-3 fade-up">
+                <div class="product-card p-3 border rounded shadow-sm bg-white h-100 hover-shadow d-flex flex-column">
+                    <img
+                        src="/images/products/{{ product.image }}"
+                        class="product-img mb-3 rounded"
+                        style="height:180px; object-fit:cover; width:100%;"
+                        alt="{{ product.name }}"
+                    >
+                    <h5 class="fw-bold mt-auto">{{ product.name }}</h5>
+                    <p class="text-success fw-bold mb-3">{{ product.price }}</p>
+                    <a href="#" class="btn btn-sm btn-outline-success mt-auto">Thêm vào giỏ</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{# ===== CALL TO ACTION ===== #}
+<div class="container py-5 text-center">
+    <h3 class="fade-up mb-4 display-5">Liên hệ ngay để xuất nhập khẩu nông sản chất lượng!</h3>
+    <a href="/lien-he" class="btn btn-success btn-lg shadow-lg fade-up">Liên hệ ngay</a>
+</div>
+
+{# ===== CSS CHO HERO + ANIMATION + CARD ===== #}
+<style>
+/* ===== HERO ===== */
+.hero-section {
+    position: relative;
+    height: 80vh;
+    background: url("/images/nhapkhau.jpg") center/cover no-repeat;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1.2s ease;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== HOVER CARD ===== */
+.hover-shadow:hover {
+    box-shadow: 0 12px 25px rgba(0,0,0,0.18);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+/* ===== SẢN PHẨM CARD ===== */
+.product-card img {
+    transition: transform 0.3s ease;
+}
+
+.product-card img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== QUY TRÌNH STEP ===== */
+.process-step {
+    transition: all 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+</style>
+
+{% endblock %}

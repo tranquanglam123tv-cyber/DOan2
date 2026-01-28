@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cherry Mỹ{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="row g-5 align-items-center">
+
+        <div class="col-md-6">
+            <img src="/images/products/sp1.jpg"
+                 class="img-fluid rounded shadow"
+                 alt="Cherry Mỹ">
+        </div>
+
+        <div class="col-md-6">
+            <h1 class="fw-bold">Cherry Mỹ</h1>
+
+            <h3 class="text-danger fw-bold my-3">
+                120.000 đ / kg
+            </h3>
+
+            <p>
+                Cherry Mỹ nhập khẩu trực tiếp, trái to, đỏ mọng,
+                giòn ngọt, giàu vitamin và chất chống oxy hóa.
+            </p>
+
+            <ul class="list-unstyled">
+                <li><strong>Xuất xứ:</strong> Mỹ</li>
+                <li><strong>Bảo quản:</strong> Ngăn mát tủ lạnh</li>
+                <li><strong>Đơn vị:</strong> Kg</li>
+            </ul>
+
+            <div class="mt-4 d-flex gap-3">
+                <a href="#" class="btn btn-success btn-lg">
+                    Thêm vào giỏ
+                </a>
+                <a href="/" class="btn btn-outline-secondary btn-lg">
+                    Quay lại
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

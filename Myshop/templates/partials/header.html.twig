@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-3" href="{{ path('home') }}">
+            🥑 <span class="brand-text">FreshFood</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto align-items-center gap-3">
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" href="{{ path('home') }}">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold" href="{{ path('app_xuat_nhap_khau') }}">🌍 Hàng xuất nhập khẩu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold" href="{{ path('app_promotion') }}">🔥 Khuyến mãi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold" href="{{ path('app_news') }}">📰 Tin tức</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold" href="{{ path('app_lien_he') }}">📞 Liên hệ</a>
+                </li>
+                
+                <li class="nav-item position-relative ms-lg-3">
+                    <a class="nav-link cart-icon" href="{{ path('app_cart') }}">
+                        <i class="fas fa-shopping-cart fs-5"></i>
+                        <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">2</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+/* ĐỊNH NGHĨA FONT & MÀU */
+.custom-navbar {
+    background: rgba(255, 255, 255, 0.9); /* Nền trắng trong suốt nhẹ */
+    backdrop-filter: blur(10px); /* Hiệu ứng mờ kính hiện đại */
+    border-bottom: 2px solid #27ae60;
+    padding: 12px 0;
+    font-family: 'Lexend', sans-serif; /* Áp dụng font Google Sans style */
+}
+
+/* LOGO */
+.navbar-brand {
+    color: #27ae60 !important;
+    text-shadow: none;
+}
+.brand-text {
+    background: linear-gradient(45deg, #000000, #1eae55);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+}
+
+/* LINK MENU */
+.navbar-nav .nav-link {
+    color: #2d3b4a !important; /* Màu chữ tối để dễ đọc */
+    font-size: 0.95rem;
+    padding: 8px 15px !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-shadow: none !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f2cd25 !important;
+    background: rgba(39, 152, 86, 0.43); /* Highlight xanh nhạt khi hover */
+}
+
+/* BIỂU TƯỢNG GIỎ HÀNG */
+.cart-icon {
+    color: #27ae60 !important;
+}
+
+/* TOGGLE CHO MOBILE */
+.navbar-toggler {
+    border: none;
+    background: rgba(39, 174, 95, 0.13);
+}
+.navbar-toggler-icon {
+    filter: none; /* Trả về màu mặc định hoặc chỉnh xanh */
+}
+
+/* FIX KHOẢNG CÁCH CHO CÁC TRANG */
+body {
+    padding-top: 3px; /* Đẩy toàn bộ nội dung trang xuống để không bị che */
+}
+</style>

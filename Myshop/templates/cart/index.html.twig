@@ -1,0 +1,233 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="cart-page">
+
+    <div class="container">
+
+        <div class="text-center mb-5 fade-up">
+            <h1 class="display-4 fw-bold">🛒 Giỏ hàng của bạn</h1>
+            <p class="lead text-muted mx-auto" style="max-width:720px;">
+                Kiểm tra lại sản phẩm trước khi tiến hành thanh toán
+            </p>
+        </div>
+
+        <div class="cart-list">
+            {% for item in cartItems %}
+                {% set subtotal = item.qty * item.price %}
+
+                <div class="cart-item fade-up">
+
+                    <div>
+                        <input type="checkbox" checked>
+                    </div>
+
+                    <div class="cart-img-box">
+                        <img src="/images/products/{{ item.image|default('placeholder.png') }}">
+                    </div>
+
+                    <div class="cart-info">
+                        <h5>{{ item.name }}</h5>
+
+                        <p class="desc">
+                            Trái cây tươi cao cấp, được tuyển chọn kỹ lưỡng từ vườn đạt chuẩn,
+                            đảm bảo độ tươi ngon tự nhiên, giàu vitamin và an toàn cho sức khỏe
+                            người tiêu dùng hằng ngày.
+                        </p>
+
+                        <div class="price">
+                            {{ item.price|number_format(0,'.',',') }}₫
+                        </div>
+                    </div>
+
+                    <div class="cart-qty">
+                        <input type="number" value="{{ item.qty }}" min="1">
+                    </div>
+
+                    <div class="cart-subtotal">
+                        {{ subtotal|number_format(0,'.',',') }}₫
+                    </div>
+
+                    <div class="cart-remove">
+                        <button>🗑</button>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div class="cart-bottom-bar">
+        <div class="container cart-bottom-inner">
+
+            <div class="left">
+                <input type="checkbox" checked>
+                <span>Chọn tất cả</span>
+            </div>
+
+            <div class="voucher">
+                <input type="text" placeholder="Nhập mã giảm giá">
+                <button>Áp dụng</button>
+            </div>
+
+            {% set total = cartItems|reduce((carry, item) => carry + (item.qty * item.price), 0) %}
+
+            <div class="total">
+                Tổng:
+                <strong>{{ total|number_format(0,'.',',') }}₫</strong>
+            </div>
+
+            <a href="/checkout" class="checkout-btn">Thanh toán</a>
+        </div>
+    </div>
+
+</div>
+
+<style>
+:root {
+    --primary-green: #27ae60;
+    --light-green: #ebf7ee;
+    --medium-green: #c2eabd;
+    --dark-green: #1b7a43;
+    --soft-border: #a8e6cf;
+}
+.cart-page{
+    background:linear-gradient(180deg, #f0fff4, #e6ffed, #fff));
+    padding:90px 0 220px;
+}
+
+.cart-item{
+    display:grid;
+    grid-template-columns:40px 220px 1fr 110px 130px 60px;
+    gap:18px;
+    align-items:center;
+    background:#fff;
+    padding:22px;
+    border-radius:22px;
+    margin-bottom:24px;
+    border:2px solid var(--soft-border);
+    box-shadow:0 20px 40px rgba(39, 174, 96, 0.1);
+}
+
+.cart-img-box{
+    width:220px;
+    height:180px;
+    border-radius:18px;
+    overflow:hidden;
+    border:2px solid var(--light-green);
+}
+.cart-img-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.cart-info h5{
+    font-weight:800;
+    color:var(--dark-green); /* Chữ tiêu đề xanh đậm */
+    margin-bottom:6px;
+}
+
+.cart-info .desc{
+    font-size:.9rem;
+    color:#4a6d58;
+    line-height:1.4;
+    margin-bottom:8px;
+
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+.cart-info .price{
+    color:var(--primary-green);
+    font-weight:800;
+}
+
+.cart-qty input{
+    width:70px;
+    height:42px;
+    border-radius:12px;
+    border:2px solid var(--soft-border);
+    text-align:center;
+}
+
+.cart-subtotal{
+    font-weight:800;
+    color:var(--primary-green);
+}
+
+.cart-remove button{
+    background: #ffebeb; 
+    border:none;
+    border-radius:12px;
+    padding:8px 12px;
+}
+.cart-remove button:hover {
+    background: #f5c6cb;
+}
+
+.cart-bottom-bar{
+    position:fixed;
+    bottom:0;left:0;right:0;
+    background: #f9fffb;
+    border-top:3px solid var(--primary-green);
+    padding:16px 0;
+}
+
+.cart-bottom-inner{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    background:#fff;
+    padding:14px 22px;
+    border-radius:22px;
+    box-shadow:0 15px 35px rgba(39, 174, 96, 0.15);
+}
+
+.cart-bottom-inner .left{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:700;
+    color: var(--dark-green);
+}
+
+.voucher{
+    display:flex;
+    gap:6px;
+}
+.voucher input{
+    border:2px solid var(--soft-border)
+    border-radius:10px;
+    padding:6px 10px;
+}
+.voucher button{
+    background:var(--primary-green);
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    padding:6px 14px;
+}
+
+.cart-bottom-inner .total{
+    margin-left:auto;
+    font-size:1.2rem;
+    font-weight:800;
+    color:var(--dark-green);
+}
+
+.checkout-btn{
+    background:linear-gradient(135deg, #2ecc71, #27ae60);
+    color:#fff;
+    padding:12px 30px;
+    border-radius:999px;
+    font-weight:900;
+    text-decoration:none;
+}
+</style>
+
+{% endblock %}

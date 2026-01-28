@@ -1,0 +1,230 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="news-page">
+
+    {# ===== TIÊU ĐỀ ===== #}
+    <div class="container text-center mb-5">
+        <h1 class="display-4 fw-bold fade-up">📰 Tin tức nông sản</h1>
+        <p class="lead fade-up mt-3" style="max-width:800px; margin:auto;">
+            Cập nhật những thông tin mới nhất về nông sản, sản phẩm và chương trình tại FreshFood Fruits.
+        </p>
+    </div>
+
+    {# ===== DANH SÁCH TIN ===== #}
+    <div class="container">
+        <div class="row g-4">
+            {% for news in newsList %}
+                <div class="col-md-6 col-lg-4 fade-up">
+                    <div class="news-card h-100 d-flex flex-column">
+
+                        <div class="news-img">
+                            <img 
+                                src="/images/news/{{ news.image }}" 
+                                alt="{{ news.title }}"
+                            >
+                        </div>
+
+                        <div class="news-body d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mt-2">{{ news.title }}</h5>
+                            <p class="flex-grow-1">{{ news.desc }}</p>
+
+                            {% if news.tags is defined %}
+                                <div class="mb-2">
+                                    {% for tag in news.tags %}
+                                        <span class="badge bg-warning text-dark me-1">{{ tag }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+
+                            <p class="text-muted mb-2">
+                                <small>{{ news.date }}</small>
+                            </p>
+
+                            <a href="#" class="btn btn-success mt-auto">Xem chi tiết</a>
+                        </div>
+
+                    </div>
+                </div>
+            {% else %}
+                <p class="text-center">Hiện chưa có tin tức nào.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    {# ===== BÀI NỔI BẬT ===== #}
+    <div class="container mt-5">
+        <h2 class="display-5 fw-bold text-center mb-4 fade-up">✨ Bài nổi bật</h2>
+
+        {% for news in newsList|slice(0,2) %}
+            <div class="highlight-news fade-up mb-4">
+                <h4 class="fw-bold">{{ news.title }}</h4>
+                <p>
+                    {{ news.desc }}
+                    Đây là bài viết nổi bật với nội dung chuyên sâu hơn, giúp người đọc hiểu rõ
+                    về thị trường nông sản, nguồn gốc sản phẩm, cách chọn lựa trái cây tươi ngon
+                    và các chương trình ưu đãi hấp dẫn đang diễn ra.
+                </p>
+
+                {% if news.tags is defined %}
+                    <div class="mb-2">
+                        {% for tag in news.tags %}
+                            <span class="badge bg-warning text-dark me-1">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <p class="text-muted"><small>{{ news.date }}</small></p>
+                <a href="#" class="btn btn-success">Xem chi tiết</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    {# ===== CTA ===== #}
+    <div class="container text-center mt-5">
+        <h3 class="display-6 fw-bold fade-up mb-4">
+            Đừng bỏ lỡ những thông tin mới nhất!
+        </h3>
+        <a href="/lien-he" class="btn btn-lg btn-warning text-dark shadow-lg fade-up">
+            Liên hệ ngay
+        </a>
+    </div>
+
+</div>
+
+<style>
+/* ĐỊNH NGHĨA BIẾN MÀU XANH */
+:root {
+    --primary-green: #27ae60;
+    --light-green: #f0fff4;
+    --medium-green: #e6ffed;
+    --dark-green: #1b7a43;
+    --soft-border: #a8e6cf;
+}
+
+/* ===== TỔNG THỂ & FONT CHỮ ===== */
+.news-page {
+    /* Đổi từ gradient cam sang gradient xanh lá nhạt */
+    background: linear-gradient(180deg, var(--light-green), var(--medium-green), #ffffff);
+    /* Tách nội dung xích xuống khỏi Navbar (khoảng 120px) */
+    padding: 120px 0 80px;
+    font-family: 'Lexend', sans-serif;
+}
+
+.news-page h1, .news-page h2 {
+    color: var(--dark-green);
+    font-weight: 700;
+}
+
+/* ===== CARD TIN TỨC ===== */
+.news-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    /* Đổi viền cam sang viền xanh nhẹ */
+    border: 2px solid var(--soft-border);
+    box-shadow: 0 18px 40px rgba(39, 174, 96, 0.1);
+    transition: .3s;
+}
+
+.news-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 55px rgba(39, 174, 96, 0.2);
+    border-color: var(--primary-green);
+}
+
+/* ===== HÌNH ẢNH ===== */
+.news-img {
+    height: 220px;
+    overflow: hidden;
+}
+
+.news-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.news-card:hover img {
+    transform: scale(1.1);
+}
+
+/* ===== NỘI DUNG TRONG CARD ===== */
+.news-body {
+    padding: 20px;
+}
+
+.news-body h5 {
+    /* Đổi màu tiêu đề sang xanh đậm */
+    color: var(--dark-green);
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.news-body p {
+    color: #4a6d58;
+    font-size: 0.95rem;
+}
+
+/* Đổi màu Badge tag từ vàng sang xanh nhạt */
+.news-body .badge.bg-warning {
+    background-color: var(--medium-green) !important;
+    color: var(--dark-green) !important;
+    border: 1px solid var(--soft-border);
+}
+
+/* ===== BÀI VIẾT NỔI BẬT (HIGHLIGHT) ===== */
+.highlight-news {
+    background: #fff;
+    border-radius: 24px;
+    padding: 30px;
+    /* Viền xanh đậm nổi bật */
+    border: 2px solid var(--primary-green);
+    box-shadow: 0 20px 45px rgba(39, 174, 96, 0.15);
+}
+
+.highlight-news h4 {
+    color: var(--dark-green);
+}
+
+/* ===== NÚT BẤM (BUTTONS) ===== */
+.btn-success {
+    background-color: var(--primary-green);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-success:hover {
+    background-color: var(--dark-green);
+    transform: scale(1.05);
+}
+
+/* Nút CTA cuối trang */
+.btn-warning {
+    background-color: #ffc107; /* Giữ màu vàng để tạo điểm nhấn tương phản với xanh */
+    border: none;
+    font-weight: 700;
+    border-radius: 50px;
+}
+
+/* ===== HIỆU ỨNG FADE UP ===== */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp .8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+
+{% endblock %}

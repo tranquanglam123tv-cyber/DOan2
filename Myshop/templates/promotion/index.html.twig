@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="promotion-page" style="background-color:rgba(39, 174, 43, 0.11); padding-top:100px; padding-bottom:60px;">
+
+    {# ===== TIÊU ĐỀ ===== #}
+    <div class="container text-center mb-5">
+        <h1 class="display-4 fw-bold text-dark fade-up">🔥 Khuyến mãi & Ưu đãi</h1>
+        <p class="lead text-dark fade-up mt-3" style="max-width:700px; margin:auto;">
+            Cập nhật các chương trình khuyến mãi hấp dẫn từ FreshFood Fruits.  
+            Giảm giá, Free Ship, quà tặng,… chỉ có tại cửa hàng và online.
+        </p>
+    </div>
+
+    {# ===== GIẢM GIÁ THEO % ===== #}
+    <div class="container mb-5">
+        <h4 class="display-7 fw-bold text-dark text-center mb-4 fade-up">💰 Giảm giá theo phần trăm</h4>
+        <div class="row g-4">
+            {% set has_percent = false %}
+            {% for promo in promotions %}
+                {% if promo.type == 'percent' %}
+                    {% set has_percent = true %}
+                    <div class="col-md-3 fade-up">
+                        <div class="promo-card border rounded shadow-sm bg-white h-100 hover-shadow d-flex flex-column">
+                            <div class="position-relative">
+                                <img
+                                    src="/images/promotions/{{ promo.image }}"
+                                    class="img-fluid rounded-top"
+                                    style="height:180px; object-fit:cover; width:100%;"
+                                    alt="{{ promo.title }}"
+                                >
+                                <div class="ribbon bg-warning text-dark fw-bold">-{{ promo.value }}%</div>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold mt-2">{{ promo.title }}</h5>
+                                <p class="mb-1 flex-grow-1">{{ promo.desc }}</p>
+                                <p class="text-muted mb-2"><small>{{ promo.date }}</small></p>
+                                <a href="#" class="btn btn-sm btn-warning mt-auto shadow-sm">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% if not has_percent %}
+                <p class="text-center text-muted">Hiện chưa có chương trình giảm giá % nào.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {# ===== FREE SHIP ===== #}
+    <div class="container mb-5">
+        <h4 class="display-7 fw-bold text-dark text-center mb-4 fade-up">🚚 Khuyến mãi Free Ship</h4>
+        <div class="row g-4">
+            {% set has_freeship = false %}
+            {% for promo in promotions %}
+                {% if promo.type == 'freeship' %}
+                    {% set has_freeship = true %}
+                    <div class="col-md-3 fade-up">
+                        <div class="promo-card border rounded shadow-sm bg-white h-100 hover-shadow d-flex flex-column">
+                            <div class="position-relative">
+                                <img
+                                    src="/images/promotions/{{ promo.image }}"
+                                    class="img-fluid rounded-top"
+                                    style="height:180px; object-fit:cover; width:100%;"
+                                    alt="{{ promo.title }}"
+                                >
+                                <div class="ribbon bg-success text-white fw-bold">Free Ship</div>
+                            </div>
+                            <div class="p-3 d-flex flex-column flex-grow-1">
+                                <h5 class="fw-bold mt-2">{{ promo.title }}</h5>
+                                <p class="mb-1 flex-grow-1">{{ promo.desc }}</p>
+                                <p class="text-muted mb-2"><small>{{ promo.date }}</small></p>
+                                <a href="#" class="btn btn-sm btn-success mt-auto shadow-sm">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% if not has_freeship %}
+                <p class="text-center text-muted">Hiện chưa có chương trình Free Ship nào.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {# ===== CALL TO ACTION ===== #}
+    <div class="container text-center mt-5">
+        <h3 class="display-5 fw-bold fade-up mb-4">Đừng bỏ lỡ các ưu đãi hấp dẫn!</h3>
+        <a href="/lien-he" class="btn btn-success btn-lg shadow-lg fade-up">Liên hệ ngay</a>
+    </div>
+
+</div>
+
+<style>
+.hover-shadow { transition: all 0.3s ease; }
+.hover-shadow:hover { box-shadow: 0 12px 25px rgba(0,0,0,0.18); transform: translateY(-5px); }
+
+.promo-card img { transition: transform 0.3s ease; }
+.promo-card img:hover { transform: scale(1.05); }
+
+.ribbon { position: absolute; top: 10px; left: -10px; padding: 0.25rem 0.75rem; font-size: 0.85rem; transform: rotate(-15deg); box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+
+.fade-up { opacity:0; transform: translateY(40px); animation: fadeUp 0.8s forwards; }
+@keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
+</style>
+
+{% endblock %}

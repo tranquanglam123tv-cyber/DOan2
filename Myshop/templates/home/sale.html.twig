@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}Khuyến mãi{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h3 class="mb-4 text-danger">🔥 Sản phẩm khuyến mãi</h3>
+
+    <div class="row">
+        {% for product in products|default([]) %}
+            <div class="col-md-3 mb-4">
+                <div class="card product-card">
+                    <div class="card-body text-center">
+                        <h6>{{ product.name }}</h6>
+                        <p class="fw-bold text-danger">{{ product.price }} đ</p>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p>Chưa có sản phẩm khuyến mãi.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

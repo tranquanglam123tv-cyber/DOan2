@@ -1,0 +1,321 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Chi tiết sản phẩm | Cherry Mỹ
+{% endblock %}
+
+{% block body %}
+
+<section class="product-detail-page">
+
+    <div class="container">
+
+        <div class="row g-5 align-items-start product-main">
+
+            {# ===== HÌNH SẢN PHẨM ===== #}
+            <div class="col-md-5 text-center">
+                <div class="product-image-box">
+                    <img
+                        src="/images/products/sp1.jpg"
+                        alt="Cherry Mỹ"
+                    >
+                </div>
+            </div>
+
+            {# ===== THÔNG TIN ===== #}
+            <div class="col-md-7 product-info">
+
+                <h2>🍒 Cherry Mỹ Cao Cấp Nhập Khẩu</h2>
+
+                <p class="sku">
+                    Mã sản phẩm: <strong>CHERRY-USA-01</strong>
+                </p>
+
+                <div class="price">
+                    120.000₫ <span>/ kg</span>
+                </div>
+
+                <p class="short-desc">
+                    Cherry Mỹ nhập khẩu chính ngạch từ các nông trại đạt chuẩn USDA,
+                    trái to đều, màu đỏ ruby tự nhiên, lớp vỏ căng bóng, thịt giòn,
+                    vị ngọt thanh pha chút chua nhẹ cực kỳ dễ ăn.
+                </p>
+
+                <p class="short-desc">
+                    Sản phẩm được bảo quản lạnh theo quy trình nghiêm ngặt,
+                    đảm bảo giữ nguyên độ tươi ngon, hương vị và giá trị dinh dưỡng
+                    khi đến tay người tiêu dùng.
+                </p>
+
+                <div class="badges">
+                    <span class="badge bg-success">Hàng nhập khẩu</span>
+                    <span class="badge bg-warning text-dark">Bán chạy</span>
+                    <span class="badge bg-danger">Cao cấp</span>
+                </div>
+
+                <div class="qty-box">
+                    <label>Số lượng:</label>
+                    <input type="number" value="1" min="1">
+                </div>
+
+                <div class="actions">
+                    <a href="#" class="btn-add-cart">
+                        🛒 Thêm vào giỏ hàng
+                    </a>
+                    <a href="{{ path('home') }}" class="btn-back">
+                        ⬅ Quay lại
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        {# ===== THÔNG TIN CHI TIẾT ===== #}
+        <div class="row mt-5">
+            <div class="col-12">
+
+                <div class="detail-box">
+                    <h4>📌 Thông tin chi tiết sản phẩm</h4>
+
+                    <table class="table table-bordered mt-3">
+                        <tbody>
+                            <tr>
+                                <th>Nguồn gốc</th>
+                                <td>Mỹ (USA)</td>
+                            </tr>
+                            <tr>
+                                <th>Giống</th>
+                                <td>Cherry đỏ Mỹ cao cấp</td>
+                            </tr>
+                            <tr>
+                                <th>Khối lượng</th>
+                                <td>1kg / hộp</td>
+                            </tr>
+                            <tr>
+                                <th>Bảo quản</th>
+                                <td>Nhiệt độ 0 – 4°C</td>
+                            </tr>
+                            <tr>
+                                <th>Hạn sử dụng</th>
+                                <td>7 – 10 ngày kể từ ngày nhập kho</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        {# ===== MÔ TẢ DÀI ===== #}
+        <div class="row mt-4">
+            <div class="col-12">
+
+                <div class="detail-box">
+                    <h4>📝 Mô tả sản phẩm</h4>
+
+                    <p>
+                        Cherry Mỹ là loại trái cây cao cấp giàu vitamin C, chất chống oxy hóa
+                        và khoáng chất thiết yếu, giúp tăng cường hệ miễn dịch,
+                        làm đẹp da và hỗ trợ sức khỏe tim mạch.
+                    </p>
+
+                    <p>
+                        Nhờ điều kiện khí hậu ôn đới đặc trưng, cherry Mỹ có vị ngọt đậm,
+                        thịt chắc, mọng nước và mùi thơm tự nhiên.
+                        Đây là lựa chọn hàng đầu cho gia đình, trẻ em và người lớn tuổi.
+                    </p>
+
+                    <p>
+                        Cherry có thể dùng ăn tươi, làm sinh tố, salad trái cây,
+                        trang trí bánh ngọt hoặc làm quà biếu sang trọng trong các dịp lễ,
+                        Tết và sự kiện quan trọng.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+/* ĐỊNH NGHĨA BIẾN MÀU XANH CHỦ ĐẠO */
+:root {
+    --primary-green: #27ae60;
+    --dark-green: #1b7a43;
+    --light-green: #f0fff4;
+    --medium-green: #e6ffed;
+    --soft-border: #a8e6cf;
+}
+
+.product-detail-page {
+    /* Chuyển sang gradient xanh lá tươi mát */
+    background: linear-gradient(180deg, var(--light-green), var(--medium-green), #ffffff);
+    padding: 120px 0 80px;
+    font-family: 'Lexend', sans-serif;
+}
+
+.product-main {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 40px;
+    /* Đổ bóng màu xanh nhẹ */
+    box-shadow: 0 25px 60px rgba(39, 174, 96, 0.12);
+    border: 2px solid var(--soft-border);
+}
+
+.product-image-box {
+    /* Gradient nền ảnh xanh nhạt */
+    background: linear-gradient(135deg, var(--light-green), var(--medium-green));
+    padding: 20px;
+    border-radius: 24px;
+    border: 2px solid var(--primary-green);
+    box-shadow: 0 18px 40px rgba(39, 174, 96, 0.2);
+}
+
+.product-image-box img {
+    width: 100%;
+    max-height: 360px;
+    object-fit: cover;
+    border-radius: 18px;
+    transition: transform 0.3s ease;
+}
+
+.product-image-box:hover img {
+    transform: scale(1.05);
+}
+
+.product-info h2 {
+    font-weight: 800;
+    color: var(--dark-green);
+    margin-bottom: 6px;
+}
+
+.product-info .sku {
+    color: #4a6d58;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.product-info .price {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--primary-green);
+    margin-bottom: 16px;
+}
+
+.product-info .price span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.short-desc {
+    color: #333;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.badges {
+    margin: 18px 0;
+}
+
+.badges .badge {
+    font-size: .8rem;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* Tùy chỉnh màu badge để hài hòa với tone xanh */
+.bg-success { background-color: var(--primary-green) !important; }
+.bg-danger { background-color: #e74c3c !important; }
+
+.qty-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 25px 0;
+    font-weight: 600;
+    color: var(--dark-green);
+}
+
+.qty-box input {
+    width: 80px;
+    height: 45px;
+    border-radius: 12px;
+    border: 2px solid var(--soft-border);
+    text-align: center;
+    font-weight: 700;
+    outline: none;
+}
+
+.qty-box input:focus {
+    border-color: var(--primary-green);
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-add-cart {
+    background: linear-gradient(135deg, #2ecc71, var(--primary-green));
+    color: #fff;
+    padding: 14px 30px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(39, 174, 96, 0.3);
+    border: none;
+}
+
+.btn-add-cart:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(39, 174, 96, 0.4);
+    color: #fff;
+}
+
+.btn-back {
+    border: 2px solid var(--primary-green);
+    padding: 14px 26px;
+    border-radius: 999px;
+    color: var(--primary-green);
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    background: var(--light-green);
+    color: var(--dark-green);
+}
+
+.detail-box {
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 30px;
+    border: 2px solid var(--soft-border);
+    box-shadow: 0 15px 40px rgba(39, 174, 96, 0.08);
+}
+
+.detail-box h4 {
+    font-weight: 700;
+    color: var(--dark-green);
+    border-left: 5px solid var(--primary-green);
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+/* Chỉnh màu bảng thông số */
+.table th {
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    width: 30%;
+}
+</style>
+
+{% endblock %}

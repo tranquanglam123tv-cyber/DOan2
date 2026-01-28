@@ -1,0 +1,191 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{# ===== HERO ===== #}
+<section class="hero" style="background: url('/images/header1.jpg') center/cover no-repeat; height:95vh; position: relative; margin-top: 50px !important;">
+    <div class="hero-content fade-up"></div>
+    <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, transparent, #f6fff8);"></div>
+</section>
+
+{# ===== SẢN PHẨM BÁN CHẠY ===== #}
+<div class="container py-5">
+    <h2 class="section-title fade-up">🔥 Sản phẩm bán chạy</h2>
+
+    {% set products = [
+        { name: 'Cherry Mỹ', price: '120.000đ', image: 'sp1.jpg' },
+        { name: 'Nho Úc', price: '150.000đ', image: 'sp2.jpg' },
+        { name: 'Sầu Riêng Musangking', price: '90.000đ', image: 'sp3.jpg' },
+        { name: 'Dâu Tây Đà Lạt', price: '110.000đ', image: 'sp4.jpg' },
+        { name: 'Me Thái', price: '80.000đ', image: 'sp5.jpg' },
+        { name: 'Mãng Cầu', price: '95.000đ', image: 'sp6.jpg' },
+        { name: 'Cam Sành', price: '60.000đ', image: 'sp7.jpg' },
+        { name: 'Măng Cục', price: '70.000đ', image: 'sp8.jpg' }
+    ] %}
+
+    <div class="row g-4">
+        {% for product in products %}
+            <div class="col-md-3 fade-up">
+                <div class="product-card p-3 text-center">
+                   {% if product.name == 'Cherry Mỹ' %}
+    <a href="{{ path('product_cherry') }}">
+        <img
+            src="/images/products/{{ product.image }}"
+            class="product-img mb-3"
+            alt="{{ product.name }}"
+        >
+    </a>
+{% else %}
+    <img
+        src="/images/products/{{ product.image }}"
+        class="product-img mb-3"
+        alt="{{ product.name }}"
+    >
+{% endif %}
+
+                    <h6>{{ product.name }}</h6>
+                    <p class="text-success fw-bold mb-2">
+                        {{ product.price }}
+                    </p>
+
+                    <a href="#" class="btn btn-sm btn-outline-success">
+                        Thêm vào giỏ
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{# ===== TIN TỨC & SỰ KIỆN ===== #}
+<div class="container py-5">
+    <h2 class="section-title fade-up">📰 Tin tức & Sự kiện</h2>
+
+    <div class="row g-4 justify-content-center">
+
+        {# Tin tức 1 #}
+        <div class="col-md-6 fade-up">
+            <div class="product-card p-3 h-100">
+
+                <img
+                    src="/images/news/tt1.jpg"
+                    class="img-fluid rounded mb-2"
+                    style="height:180px; object-fit:cover; width:100%;"
+                    alt="Trải nghiệm trái cây Hàn Quốc"
+                >
+
+                <h6 class="fw-bold mb-1">
+                    Trải nghiệm trái cây Hàn Quốc miễn phí cùng Thủy Anh Fruits
+                </h6>
+
+                <p class="mb-1">
+                    Bạn yêu thích hương vị trái cây Hàn Quốc nhưng còn băn khoăn trước khi chọn mua?
+                    <strong>Thủy Anh Fruits</strong> mời bạn đến trải nghiệm – thưởng thức – cảm nhận
+                    <strong>hoàn toàn miễn phí!</strong>
+                </p>
+
+                <p class="mb-1">📍 Thời gian: 27/12 – 31/12/2025</p>
+
+                <p class="mb-1">📍 Địa điểm: Toàn bộ hệ thống Thủy Anh Fruits và 05 cửa hàng WinMart</p>
+
+                <a href="#" class="btn btn-success mt-2 btn-sm">Xem chi tiết</a>
+
+            </div>
+        </div>
+
+        {# Tin tức 2 #}
+        <div class="col-md-6 fade-up">
+            <div class="product-card p-3 h-100">
+
+                <img
+                    src="/images/news/tt2.jpg"
+                    class="img-fluid rounded mb-2"
+                    style="height:180px; object-fit:cover; width:100%;"
+                    alt="Lễ hội Dâu tây Hàn Quốc 2025"
+                >
+
+                <h6 class="fw-bold mb-1">
+                    Lễ hội Dâu tây Hàn Quốc 2025 tại Thủy Anh Fruits
+                </h6>
+
+                <p class="mb-1">
+                    Tháng 12 này, <strong>Thủy Anh Fruits</strong> hân hạnh mang đến Lễ hội Dâu tây Hàn Quốc – sự kiện được mong chờ nhất mùa đông.
+                </p>
+
+                <p class="mb-1">📅 Thời gian: 6/12 – 8/12/2025 (3 ngày duy nhất)</p>
+
+                <ul class="mb-1" style="padding-left:1rem;">
+                    <li>🍓 Ăn thử miễn phí dâu tây Hàn Quốc tại 6 cơ sở Thủy Anh Fruits</li>
+                    <li>🍓 Trải nghiệm hương thơm và độ mọng đặc trưng của dâu Hàn</li>
+                    <li>🍓 Mua dâu tây với giá ưu đãi chỉ có trong lễ hội</li>
+                </ul>
+
+                <p class="mb-1">🇰🇷 Dâu Hàn mùa mới đã sẵn sàng chinh phục giác quan của bạn!</p>
+
+                <a href="#" class="btn btn-success mt-2 btn-sm">Xem chi tiết</a>
+
+            </div>
+        </div>
+
+        {# Tin tức 3 #}
+        <div class="col-md-6 fade-up">
+            <div class="product-card p-3 h-100">
+
+                <img
+                    src="/images/news/tt3.jpg"
+                    class="img-fluid rounded mb-2"
+                    style="height:180px; object-fit:cover; width:100%;"
+                    alt="Lễ hội trái cây Hàn Quốc 2025"
+                >
+
+                <h6 class="fw-bold mb-1">
+                    Lễ hội trái cây Hàn Quốc ngọt lành 2025
+                </h6>
+
+                <p class="mb-1">
+                    Lễ hội trái cây Hàn Quốc ngọt lành sẽ chính thức “đổ bộ” Thủy Anh Fruits từ 27/12/2025 đến 31/03/2026 tại toàn bộ hệ thống cửa hàng.
+                </p>
+
+                <p class="mb-1">
+                    Trong suốt thời gian lễ hội, Thủy Anh Fruits mang đến cơ hội trải nghiệm những loại trái cây Hàn Quốc được yêu thích nhất.
+                </p>
+
+                <a href="#" class="btn btn-success mt-2 btn-sm">Xem chi tiết</a>
+
+            </div>
+        </div>
+
+        {# Tin tức 4 #}
+        <div class="col-md-6 fade-up">
+            <div class="product-card p-3 h-100">
+
+                <img
+                    src="/images/news/tt4.jpg"
+                    class="img-fluid rounded mb-2"
+                    style="height:180px; object-fit:cover; width:100%;"
+                    alt="Trải nghiệm trái cây Hàn Quốc mùa đông"
+                >
+
+                <h6 class="fw-bold mb-1">
+                    Trải nghiệm trái cây Hàn Quốc mùa đông
+                </h6>
+
+                <p class="mb-1">
+                    Tham gia lễ hội để nếm thử các loại trái cây Hàn Quốc tuyển chọn, thưởng thức vị tươi ngon và hương thơm đặc trưng ngay tại cửa hàng.
+                </p>
+
+                <p class="mb-1">
+                    Cùng bạn bè và gia đình tận hưởng mùa đông ngọt lành với những loại trái cây Hàn Quốc được yêu thích nhất!
+                </p>
+
+                <a href="#" class="btn btn-success mt-2 btn-sm">Xem chi tiết</a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}
